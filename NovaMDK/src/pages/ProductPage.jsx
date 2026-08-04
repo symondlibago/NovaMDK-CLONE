@@ -175,12 +175,7 @@ export default function ProductPage() {
         <div className="grid gap-8 md:grid-cols-2 md:items-start lg:gap-14">
           {/* image */}
           <Reveal className="min-w-0">
-            <div className="group/img relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[calc(30px*var(--nv-r-scale,1))] border border-line bg-linear-to-br from-surface to-surface-2 p-7 nv-shadow md:min-h-[460px] md:p-12">
-              {/* champagne glow */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{ background: "radial-gradient(58% 52% at 50% 42%, color-mix(in oklab, var(--nv-accent) 28%, transparent), transparent 70%)" }}
-              />
+            <div className="group/img relative flex min-h-90 items-center justify-center overflow-hidden rounded-[calc(30px*var(--nv-r-scale,1))] border border-line bg-white p-7 nv-shadow md:min-h-140 md:p-10">
               {/* pedestal shadow */}
               <div className="pointer-events-none absolute bottom-[16%] left-1/2 h-6 w-2/5 -translate-x-1/2 rounded-[50%] bg-ink/15 blur-xl" />
 
@@ -188,7 +183,7 @@ export default function ProductPage() {
                 {categoryLabel}
               </span>
               {product.dosageForm && (
-                <span className="absolute bottom-6 left-6 z-10 rounded-full bg-ink px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-on-primary">
+                <span className="absolute bottom-6 left-6 z-10 rounded-full bg-ink px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-on-panel">
                   {product.dosageForm}
                 </span>
               )}
@@ -196,7 +191,7 @@ export default function ProductPage() {
               <img
                 src={product.img}
                 alt={product.name}
-                className="relative max-h-[340px] w-auto object-contain mix-blend-multiply drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-[1.03]"
+                className="relative max-h-100 w-auto max-w-full object-contain mix-blend-multiply drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-[1.03] md:max-h-115"
               />
             </div>
           </Reveal>

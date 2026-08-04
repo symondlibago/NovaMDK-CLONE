@@ -69,7 +69,7 @@ export function ProductCard({ p, delay, floatDelay = 0, onQuickView }) {
       {/* Quick view — opens a preview modal so patients know the product before consulting */}
       <button
         onClick={(e) => { e.stopPropagation(); onQuickView(p); }}
-        className="group/btn mt-auto flex items-center justify-center gap-1.5 rounded-full bg-primary py-1.5 text-[11.5px] font-semibold text-on-primary transition-all hover:bg-primary-deep nv-shadow sm:py-3 sm:text-[13.5px]"
+        className="group/btn mt-auto flex items-center justify-center gap-1.5 rounded-full bg-[color-mix(in_oklab,var(--nv-accent)_72%,var(--nv-surface))] py-1.5 text-[11.5px] font-semibold text-ink transition-all hover:bg-[color-mix(in_oklab,var(--nv-accent)_86%,var(--nv-surface))] nv-shadow sm:py-3 sm:text-[13.5px]"
       >
         Quick view
         <ArrowRight size={14} strokeWidth={2.5} className="transition-transform group-hover/btn:translate-x-0.5" />
@@ -132,12 +132,8 @@ export function QuickViewModal({ product, onClose }) {
 
             <div className="grid md:grid-cols-2">
               {/* image */}
-              <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden bg-linear-to-br from-surface to-surface-2 p-8 md:min-h-full">
-                <span
-                  className="pointer-events-none absolute inset-0"
-                  style={{ background: "radial-gradient(58% 52% at 50% 42%, color-mix(in oklab, var(--nv-accent) 26%, transparent), transparent 70%)" }}
-                />
-                <img src={product.img} alt={product.name} className="relative max-h-[260px] w-auto object-contain mix-blend-multiply drop-shadow-2xl" />
+              <div className="relative flex min-h-75 items-center justify-center overflow-hidden bg-white p-6 md:min-h-full">
+                <img src={product.img} alt={product.name} className="relative max-h-85 w-auto max-w-full object-contain mix-blend-multiply drop-shadow-2xl" />
               </div>
 
               {/* info */}
@@ -169,7 +165,7 @@ export function QuickViewModal({ product, onClose }) {
                 <Link
                   to={productPath(product)}
                   onClick={onClose}
-                  className="group/cta mt-6 flex items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-[0.95rem] font-semibold text-on-primary transition-all hover:-translate-y-0.5 hover:bg-primary-deep nv-shadow"
+                  className="group/cta mt-6 flex items-center justify-center gap-2 rounded-full bg-[color-mix(in_oklab,var(--nv-accent)_72%,var(--nv-surface))] py-3.5 text-[0.95rem] font-semibold text-ink transition-all hover:-translate-y-0.5 hover:bg-[color-mix(in_oklab,var(--nv-accent)_86%,var(--nv-surface))] nv-shadow"
                 >
                   View full details <ArrowRight size={16} className="transition-transform group-hover/cta:translate-x-0.5" />
                 </Link>
