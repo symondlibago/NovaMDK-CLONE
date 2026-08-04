@@ -364,7 +364,7 @@ function ExploreTreatments({ large = false }) {
           }`}
           style={{
             background:
-              "linear-gradient(100deg, color-mix(in srgb, var(--nv-accent) 74%, var(--nv-bg)) 0%, color-mix(in srgb, var(--nv-accent) 88%, var(--nv-bg)) 48%, color-mix(in srgb, var(--nv-accent) 100%, var(--nv-bg)) 100%)",
+              "linear-gradient(100deg, color-mix(in oklab, var(--nv-accent) 60%, var(--nv-surface)) 0%, color-mix(in oklab, var(--nv-accent) 80%, var(--nv-surface)) 100%)",
           }}
         >
           <span className="relative z-10 min-w-0 flex-1 text-left">

@@ -768,7 +768,6 @@ export const productsData = [
     id: 24,
     categorySlug: "unisex-anti-aging-rx",
     categoryName: "Unisex Anti-Aging Rx",
-    hidden: true,
     name: "Sermorelin Injection - 3 mL or 9 mL vial",
     qrImg: "/qr/Sermorelin.avif",
     subtitle: "Nightly GHRH analog injection supporting the natural overnight growth-hormone pulse.",
@@ -796,7 +795,6 @@ export const productsData = [
     id: 25,
     categorySlug: "unisex-anti-aging-rx",
     categoryName: "Unisex Anti-Aging Rx",
-    hidden: true,
     name: "Sermorelin Mini Troche - 600 mcg",
     qrImg: "/qr/Sermorelin.avif",
     subtitle: "Needle-free nightly sermorelin — a mini troche dissolved in the cheek at bedtime.",
@@ -1267,7 +1265,6 @@ export const productsData = [
     id: 301,
     categorySlug: "supplements",
     categoryName: "Supplements",
-    hidden: true,
     name: "Glutaryl — Topical Glutathione Spray",
     // Non-prescription retail product carried alongside the Rx catalog:
     // `otc` drops the Rx-only / compounded labelling and the intake handoff.

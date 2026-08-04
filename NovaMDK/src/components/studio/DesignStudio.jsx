@@ -688,7 +688,7 @@ export default function DesignStudio() {
         )}
       </AnimatePresence>
     </>
-  );
+  );  
 }
 
 function Section({ icon, title, children }) {

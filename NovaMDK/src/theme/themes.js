@@ -2,22 +2,23 @@ export const PALETTES = [
   {
     id: "bronze-gold",
     name: "Bronze & Gold",
-    tagline: "Warm cream + bronze and gold · apothecary luxury",
-    swatch: ["#33271B", "#8A6B3D", "#A8813C", "#E6DECD", "#F7F3EA"],
+    tagline: "Warm ivory + brass, dark type · the house palette",
+    swatch: ["#A97D24", "#C3963C", "#EFE2CE", "#E6D9C4", "#F5EDE1"],
+
     vars: {
-      "--nv-bg": "#F7F3EA",
-      "--nv-surface": "#FFFFFF",
-      "--nv-surface-2": "#EFE7D8",
-      "--nv-ink": "#33271B",
-      "--nv-ink-panel": "#2B2117",
-      "--nv-primary": "#8A6B3D",
-      "--nv-primary-deep": "#6E5430",
-      "--nv-accent": "#A8813C",
-      "--nv-line": "#E6DECD",
-      "--nv-line-strong": "#D6CAB2",
-      "--nv-muted": "#6B5F50",
-      "--nv-on-primary": "#FDFAF3",
-      "--nv-on-panel": "#E8DFCD",
+      "--nv-bg": "#F5EDE1",
+      "--nv-surface": "#FDFAF5",
+      "--nv-surface-2": "#EFE2CE",
+      "--nv-ink": "#1B1712",
+      "--nv-ink-panel": "#17130D",
+      "--nv-primary": "#A97D24",
+      "--nv-primary-deep": "#C3963C",
+      "--nv-accent": "#A97D24",
+      "--nv-line": "#E6D9C4",
+      "--nv-line-strong": "#D6C3A6",
+      "--nv-muted": "#6B5E4B",
+      "--nv-on-primary": "#1B1712",
+      "--nv-on-panel": "#ECE0CA",
     },
   },
   {
@@ -652,11 +653,6 @@ export const LINE_HEIGHTS = [
   { id: "relaxed", name: "Relaxed", vars: { "--nv-line-height": "1.85" } },
 ];
 
-/** Corner-radius presets (studio). Two mechanisms, applied together:
- *  1. Override Tailwind's named radius scale (`--radius-*`) → all `rounded-lg/xl/2xl…`.
- *  2. A unitless `--nv-r-scale` multiplier → the bespoke card radii, which are
- *     authored as `rounded-[calc(NNpx*var(--nv-r-scale,1))]`.
- *  "soft" = scale 1 + Tailwind defaults = today's look (no visual change). */
 export const RADII = [
   {
     id: "sharp",
@@ -697,29 +693,21 @@ export const WEIGHTS = [
   { id: "bold", name: "Bold", vars: { "--nv-weight-heading": "900", "--nv-weight-body": "500" } },
 ];
 
-/** Device preview frames (px) used by the studio's responsive viewer.
- *  The real kiosk runs the tablet responsive view, so the portrait tablet
- *  frame doubles as the kiosk preview (carries the 3 layout variants). */
 export const DEVICES = [
   { id: "live", name: "Live", icon: "monitor", w: null, h: null },
   { id: "phone", name: "Phone", icon: "smartphone", w: 390, h: 844 },
   { id: "tablet", name: "Tablet", icon: "tablet", w: 834, h: 1112 },
   { id: "desktop", name: "Desktop", icon: "monitor", w: 1280, h: 800 },
-  // The physical unit: Apolosign 32" display mounted portrait (1080×1920).
-  // Frames the page with ?kiosk= so the preview shows true kiosk mode.
   { id: "kiosk", name: "Kiosk 32″", icon: "monitor", w: 1080, h: 1920 },
 ];
 
-/** Portrait tablet / kiosk homepage hero layouts. The studio drives the chosen
- *  variant onto the tablet preview via `?kiosk=<id>`; on a real tablet (or the
- *  kiosk's tablet view) the portrait breakpoint shows the same hero. */
 export const KIOSK_LAYOUTS = [
   { id: "overlay", name: "Overlay Hero", tagline: "Headline over the full-width video, bigger goal list" },
   { id: "desktop", name: "Desktop Hero", tagline: "Same split layout as the desktop site" },
 ];
 
 export const DEFAULTS = {
-  palette: "slate",
+  palette: "bronze-gold",
   typography: "grotesk",
   weight: "medium",
   italic: false,
