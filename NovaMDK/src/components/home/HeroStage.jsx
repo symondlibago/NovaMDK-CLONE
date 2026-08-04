@@ -24,9 +24,9 @@ const FEATURED = {
 };
 
 const SHELF = [
-  { id: 17, label: "Antioxidant Support", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
+  { id: 301, label: "Antioxidant Support", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
   { id: 16, label: "Cellular Energy", short: "NAD+", img: "/products/shelf/vial.png" },
-  { id: 222, label: "Metabolic Wellness", short: "Tesamorelin", img: "/products/shelf/vial.png" },
+  { id: 32, label: "Peak Performance", short: "Olympus Peak", img: "/products/shelf/olympuspeak.png" },
   { id: 302, label: "Skin Rejuvenation", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
   { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/nasal.png" },
   { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/vial.png" },
