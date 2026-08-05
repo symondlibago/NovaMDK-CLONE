@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldAlert, X, Check } from "lucide-react";
-import { isCompounded, isPhotoImage } from "../data/products";
+import { isCompounded } from "../data/products";
 import { productPath } from "../../lib/slug";
 import { ComplianceBadges } from "../Compliance";
 import { getLenis } from "../../lib/smoothScroll";
@@ -46,34 +46,23 @@ export function ProductCard({ p, delay, floatDelay = 0, onQuickView }) {
         <ComplianceBadges compounded={isCompounded(p)} rx={!p.otc} />
       </div>
 
-      {isPhotoImage(p.img) ? (
-        <div className="my-2 h-20 overflow-hidden rounded-[calc(14px*var(--nv-r-scale,1))] sm:my-5 sm:h-36 md:h-24 lg:h-32">
+      <div className="my-2 flex h-20 items-center justify-center px-2 sm:my-5 sm:h-36 md:h-24 lg:h-32">
+        {/* wrapper carries the idle vertical float so the img keeps its hover transform */}
+        <span className="nv-float flex h-full w-full items-center justify-center" style={{ animationDelay: `${floatDelay}s` }}>
           <img
             src={p.img}
             alt={p.name}
             loading="lazy"
-            className="pointer-events-none h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className={`pointer-events-none h-full w-full object-contain mix-blend-multiply drop-shadow-xl transition-transform duration-500 ease-out ${
+              isTube(p.img)
+                ? "scale-150 group-hover:scale-[1.6]"
+                : isPen(p.img)
+                  ? "scale-[1.35] group-hover:scale-[1.45]"
+                  : "group-hover:-translate-y-1.5 group-hover:scale-105"
+            }`}
           />
-        </div>
-      ) : (
-        <div className="my-2 flex h-20 items-center justify-center px-2 sm:my-5 sm:h-36 md:h-24 lg:h-32">
-          {/* wrapper carries the idle vertical float so the img keeps its hover transform */}
-          <span className="nv-float flex h-full w-full items-center justify-center" style={{ animationDelay: `${floatDelay}s` }}>
-            <img
-              src={p.img}
-              alt={p.name}
-              loading="lazy"
-              className={`pointer-events-none h-full w-full object-contain mix-blend-multiply drop-shadow-xl transition-transform duration-500 ease-out ${
-                isTube(p.img)
-                  ? "scale-150 group-hover:scale-[1.6]"
-                  : isPen(p.img)
-                    ? "scale-[1.35] group-hover:scale-[1.45]"
-                    : "group-hover:-translate-y-1.5 group-hover:scale-105"
-              }`}
-            />
-          </span>
-        </div>
-      )}
+        </span>
+      </div>
 
       <p className="mb-2.5 line-clamp-2 min-h-7 text-[0.65rem] leading-snug text-muted sm:mb-5 sm:min-h-11 sm:leading-relaxed sm:text-[0.85rem] md:text-[0.75rem] lg:text-[0.82rem]">{p.subtitle}</p>
 
@@ -143,16 +132,8 @@ export function QuickViewModal({ product, onClose }) {
 
             <div className="grid md:grid-cols-2">
               {/* image */}
-              <div className={`relative flex min-h-75 items-center justify-center overflow-hidden md:min-h-full ${isPhotoImage(product.img) ? "" : "bg-white p-6"}`}>
-                <img
-                  src={product.img}
-                  alt={product.name}
-                  className={
-                    isPhotoImage(product.img)
-                      ? "absolute inset-0 h-full w-full object-cover"
-                      : "relative max-h-85 w-auto max-w-full object-contain mix-blend-multiply drop-shadow-2xl"
-                  }
-                />
+              <div className="relative flex min-h-75 items-center justify-center overflow-hidden bg-white p-6 md:min-h-full">
+                <img src={product.img} alt={product.name} className="relative max-h-85 w-auto max-w-full object-contain mix-blend-multiply drop-shadow-2xl" />
               </div>
 
               {/* info */}

@@ -9,7 +9,7 @@ import Seo from "../components/Seo";
 import Navbar from "../components/Nav/Navbar";
 import Footer from "../components/Nav/Footer";
 import Reveal from "../components/ui/Reveal";
-import { productsData, visibleProducts, isCompounded, isOtc, isHidden, isPhotoImage } from "../components/data/products";
+import { productsData, visibleProducts, isCompounded, isOtc, isHidden } from "../components/data/products";
 import { productSlug, productPath } from "../lib/slug";
 import { syncToGhl, treatmentLabel } from "../lib/ghl";
 import { ComplianceBadges, CompoundedDisclaimer, FdaDisclaimer, fdaDisclaimer } from "../components/Compliance";
@@ -73,6 +73,11 @@ export default function ProductPage() {
     .slice(0, 3);
   const relatedHeading = `More in ${product.categoryName}`;
   const hasCompounded = isCompounded(product);
+  // `imgDetail` is a photo that carries its own backdrop, so it fills the panel
+  // edge-to-edge. Without one we fall back to the transparent cut-out, centred
+  // and multiplied onto white.
+  const detailImg = product.imgDetail || product.img;
+  const hasPhoto = !!product.imgDetail;
   const isSupplement = product.categorySlug === "supplements";
   const hasFda = isSupplement && !!fdaDisclaimer(product);
   const startVisit = async (patient) => {
@@ -175,9 +180,9 @@ export default function ProductPage() {
         <div className="grid gap-8 md:grid-cols-2 md:items-start lg:gap-14">
           {/* image */}
           <Reveal className="min-w-0">
-            <div className={`group/img relative flex min-h-90 items-center justify-center overflow-hidden rounded-[calc(30px*var(--nv-r-scale,1))] border border-line nv-shadow md:min-h-140 ${isPhotoImage(product.img) ? "" : "bg-white p-7 md:p-10"}`}>
+            <div className={`group/img relative flex min-h-90 items-center justify-center overflow-hidden rounded-[calc(30px*var(--nv-r-scale,1))] border border-line nv-shadow md:min-h-140 ${hasPhoto ? "" : "bg-white p-7 md:p-10"}`}>
               {/* pedestal shadow — only grounds a cut-out; a photo has its own */}
-              {!isPhotoImage(product.img) && (
+              {!hasPhoto && (
                 <div className="pointer-events-none absolute bottom-[16%] left-1/2 h-6 w-2/5 -translate-x-1/2 rounded-[50%] bg-ink/15 blur-xl" />
               )}
 
@@ -191,10 +196,10 @@ export default function ProductPage() {
               )}
 
               <img
-                src={product.img}
+                src={detailImg}
                 alt={product.name}
                 className={
-                  isPhotoImage(product.img)
+                  hasPhoto
                     ? "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/img:scale-[1.03]"
                     : "relative max-h-100 w-auto max-w-full object-contain mix-blend-multiply drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-[1.03] md:max-h-115"
                 }

@@ -136,7 +136,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/semaglutide-b12.avif",
+    img: "/products/semaglutide-b12.avif",
+    imgDetail: "/products/detail/semaglutide-b12.avif",
     questionnaireId: "df9d89e6-db14-4b17-8c34-a178b75c8f95",
     highlights: [
       { text: "Weekly GLP-1 Dosing" },
@@ -164,7 +165,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/semaglutide-b12.avif",
+    img: "/products/semaglutide-b12.avif",
+    imgDetail: "/products/detail/semaglutide-b12.avif",
     questionnaireId: "b8583d31-6f0b-4c2b-9462-0c7544bc7934",
     highlights: [
       { text: "Continuation Vial" },
@@ -248,7 +250,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-niacinamide.avif",
+    img: "/products/tirzepatide-niacinamide.avif",
+    imgDetail: "/products/detail/tirzepatide-niacinamide.avif",
     questionnaireId: "7ec64059-bbff-4448-a48a-39278f111bfa",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -276,7 +279,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-niacinamide.avif",
+    img: "/products/tirzepatide-niacinamide.avif",
+    imgDetail: "/products/detail/tirzepatide-niacinamide.avif",
     questionnaireId: "71ceae4f-b7b1-4788-9556-52e32ba02b7e",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -304,7 +308,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-niacinamide.avif",
+    img: "/products/tirzepatide-niacinamide.avif",
+    imgDetail: "/products/detail/tirzepatide-niacinamide.avif",
     questionnaireId: "71ceae4f-b7b1-4788-9556-52e32ba02b7e",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -332,7 +337,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-glycine.avif",
+    img: "/products/tirzepatide-glycine.avif",
+    imgDetail: "/products/detail/tirzepatide-glycine.avif",
     questionnaireId: "98f2af82-a1a8-4aad-98a9-730e9040fcf1",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -360,7 +366,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-glycine.avif",
+    img: "/products/tirzepatide-glycine.avif",
+    imgDetail: "/products/detail/tirzepatide-glycine.avif",
     questionnaireId: "d61cbcb1-f9a9-4407-87b3-c4148a9c21fe",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -388,7 +395,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/detail/tirzepatide-glycine.avif",
+    img: "/products/tirzepatide-glycine.avif",
+    imgDetail: "/products/detail/tirzepatide-glycine.avif",
     questionnaireId: "d61cbcb1-f9a9-4407-87b3-c4148a9c21fe",
     highlights: [
       { text: "Dual GIP / GLP-1" },
@@ -443,7 +451,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Injection (IM or SC)",
     icon: <Flame size={16} />,
-    img: "/products/detail/lipo-c.avif",
+    img: "/products/lipo-c.avif",
+    imgDetail: "/products/detail/lipo-c.avif",
     questionnaireId: "79c1e11a-ffd0-4dbb-8193-4dc8685510da",
     highlights: [
       { text: "Lipotropic Blend" },
@@ -472,7 +481,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Drops",
     icon: <Droplet size={16} />,
-    img: "/products/detail/semaglutide-sublingual-drops.avif",
+    img: "/products/semaglutide-sublingual-drops.avif",
+    imgDetail: "/products/detail/semaglutide-sublingual-drops.avif",
     questionnaireId: "268d77e8-6ffe-4df1-9164-04e4b7d09e0f",
     highlights: [
       { text: "No Needles Required" },
@@ -500,7 +510,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Drops",
     icon: <Droplet size={16} />,
-    img: "/products/detail/semaglutide-sublingual-drops.avif",
+    img: "/products/semaglutide-sublingual-drops.avif",
+    imgDetail: "/products/detail/semaglutide-sublingual-drops.avif",
     questionnaireId: "92eccddb-5040-4f9a-8714-fadaf80b9167",
     highlights: [
       { text: "No Needles Required" },
@@ -528,7 +539,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Drops",
     icon: <Droplet size={16} />,
-    img: "/products/detail/semaglutide-sublingual-drops.avif",
+    img: "/products/semaglutide-sublingual-drops.avif",
+    imgDetail: "/products/detail/semaglutide-sublingual-drops.avif",
     questionnaireId: "92eccddb-5040-4f9a-8714-fadaf80b9167",
     highlights: [
       { text: "No Needles Required" },
@@ -560,7 +572,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Weekly Subcutaneous Injection",
     icon: <Zap size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "Cellular Energy" },
@@ -617,7 +630,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Subcutaneous / IM Injection",
     icon: <Zap size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "Cellular Energy" },
@@ -645,7 +659,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Subcutaneous / IM Injection",
     icon: <Zap size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "Cellular Energy" },
@@ -673,7 +688,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Subcutaneous / IM Injection",
     icon: <Zap size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "Cellular Energy" },
@@ -700,7 +716,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "IV Infusion",
     icon: <Activity size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "250 mg NAD+" },
@@ -726,7 +743,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "IV Infusion",
     icon: <BrainCircuit size={16} />,
-    img: "/products/detail/nad-plus.avif",
+    img: "/products/nad-plus.avif",
+    imgDetail: "/products/detail/nad-plus.avif",
     questionnaireId: "1e74716c-356b-4680-a026-1245bdce42b6",
     highlights: [
       { text: "500 mg NAD+" },
@@ -753,7 +771,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Tablet",
     icon: <Pill size={16} />,
-    img: "/products/detail/nad-plus-sublingual.avif",
+    img: "/products/nad-plus-sublingual.avif",
+    imgDetail: "/products/detail/nad-plus-sublingual.avif",
     questionnaireId: "91480561-864e-4bda-8bad-694696ac2e1f",
     highlights: [
       { text: "Needle-Free" },
@@ -836,7 +855,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Oral Tablet",
     icon: <Shield size={16} />,
-    img: "/products/detail/ldn.avif",
+    img: "/products/ldn.avif",
+    imgDetail: "/products/detail/ldn.avif",
     questionnaireId: "c5535eaa-f54c-4be1-a613-323122cd275f",
     highlights: [
       { text: "Bedtime Dosing" },
@@ -864,7 +884,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Oral Tablet",
     icon: <Shield size={16} />,
-    img: "/products/detail/ldn.avif",
+    img: "/products/ldn.avif",
+    imgDetail: "/products/detail/ldn.avif",
     questionnaireId: "c5535eaa-f54c-4be1-a613-323122cd275f",
     highlights: [
       { text: "Bedtime Dosing" },
@@ -892,7 +913,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Oral Tablet",
     icon: <Shield size={16} />,
-    img: "/products/detail/ldn.avif",
+    img: "/products/ldn.avif",
+    imgDetail: "/products/detail/ldn.avif",
     questionnaireId: "c5535eaa-f54c-4be1-a613-323122cd275f",
     highlights: [
       { text: "Bedtime Dosing" },
@@ -923,7 +945,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Topical Cream",
     icon: <Sparkles size={16} />,
-    img: "/products/detail/luminance.avif",
+    img: "/products/luminance.avif",
+    imgDetail: "/products/detail/luminance.avif",
     questionnaireId: "",
     highlights: [
       { text: "Rx Brightening Blend" },
@@ -953,7 +976,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Flex-Dose Tablet",
     icon: <Heart size={16} />,
-    img: "/products/detail/olympus.avif",
+    img: "/products/olympus.avif",
+    imgDetail: "/products/detail/olympus.avif",
     questionnaireId: "",
     highlights: [
       { text: "On-Demand Dosing" },
@@ -979,7 +1003,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Flex-Dose Tablet",
     icon: <Heart size={16} />,
-    img: "/products/detail/olympus-plus.avif",
+    img: "/products/olympus-plus.avif",
+    imgDetail: "/products/detail/olympus-plus.avif",
     questionnaireId: "",
     highlights: [
       { text: "On-Demand Dosing" },
@@ -1005,7 +1030,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Flex-Dose Tablet",
     icon: <Flame size={16} />,
-    img: "/products/detail/olympus-peak.avif",
+    img: "/products/olympus-peak.avif",
+    imgDetail: "/products/detail/olympus-peak.avif",
     questionnaireId: "",
     highlights: [
       { text: "On-Demand Dosing" },
@@ -1057,7 +1083,8 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Flex-Dose Tablet",
     icon: <Flame size={16} />,
-    img: "/products/detail/olympus-max-peak.avif",
+    img: "/products/olympus-max-peak.avif",
+    imgDetail: "/products/detail/olympus-max-peak.avif",
     questionnaireId: "",
     highlights: [
       { text: "Maximum Strength" },
@@ -2494,11 +2521,6 @@ export const isCompounded = (product) => !product?.fdaApproved && !product?.otc;
 /** Non-prescription retail products — no Rx label, no intake handoff. */
 export const isOtc = (product) => !!product?.otc;
 export const isHidden = (product) => !!product?.hidden;
-
-/** Photo-backed product shots carry their own backdrop, so they fill their frame
- *  edge-to-edge. Everything else is a transparent cut-out that gets centred and
- *  multiplied onto the panel. */
-export const isPhotoImage = (src = "") => String(src).startsWith("/products/detail/");
 export const visibleProducts = productsData.filter((p) => !p.hidden);
 
 export const categoryContent = {
