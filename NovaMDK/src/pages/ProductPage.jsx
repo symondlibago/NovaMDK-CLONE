@@ -3,7 +3,7 @@ import { useParams, useNavigate, Navigate, Link } from "react-router-dom";
 import { track, EVENTS } from "../lib/analytics";
 import {
   ArrowRight, ArrowLeft, Check, ShieldAlert, ShieldCheck, Truck, Stethoscope, Lock, FlaskConical, Loader2,
-  QrCode, X, UserRound, ChevronDown, MapPin,
+  QrCode, X, UserRound, ChevronDown, MapPin, Home,
 } from "lucide-react";
 import Seo from "../components/Seo";
 import Navbar from "../components/Nav/Navbar";
@@ -167,9 +167,14 @@ export default function ProductPage() {
 
       {/* breadcrumb */}
       <div className="mx-auto max-w-[1180px] px-5 pt-6 md:px-10">
-        <Link to={backLink} className="inline-flex items-center gap-1.5 text-[0.9rem] font-medium text-muted transition-colors hover:text-ink">
-          <ArrowLeft size={15} /> Back to {categoryLabel}
-        </Link>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Link to={backLink} className="inline-flex items-center gap-1.5 text-[0.9rem] font-medium text-muted transition-colors hover:text-ink">
+            <ArrowLeft size={15} /> Back to {categoryLabel}
+          </Link>
+          <Link to="/" className="inline-flex items-center gap-1.5 text-[0.9rem] font-medium text-muted transition-colors hover:text-ink">
+            <Home size={15} /> Home
+          </Link>
+        </div>
       </div>
 
       {/* ===== Hero ===== */}
