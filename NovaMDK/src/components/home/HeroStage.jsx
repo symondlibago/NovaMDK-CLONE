@@ -20,13 +20,13 @@ const FEATURED = {
   title: "Tirzepatide",
   subtitle: "Metabolic and weight management",
   to: "/treatments/weight-loss",
-  img: "/products/shelf/tirzepatide.png",
+  img: "/products/tirzepatide-niacinamide.avif",
 };
 
 const SHELF = [
   { id: 301, label: "Antioxidant Support", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
   { id: 16, label: "Cellular Energy", short: "NAD+", img: "/products/shelf/vial.png" },
-  { id: 32, label: "Peak Performance", short: "Olympus Peak", img: "/products/shelf/olympuspeak.png" },
+  { id: 32, label: "Peak Performance", short: "Olympus Peak", img: "/products/olympus-peak.avif" },
   { id: 302, label: "Skin Rejuvenation", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
   { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/nasal.png" },
   { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/vial.png" },
@@ -389,8 +389,8 @@ function ExploreTreatments({ large = false }) {
               loading="lazy"
               className={`absolute left-1/2 w-auto max-w-none origin-bottom -translate-x-1/2 object-contain object-bottom transition-transform duration-500 ${
                 large
-                  ? "-bottom-16 h-[calc(100%+3.5rem)] translate-y-12 scale-[1.6] group-hover:scale-[1.68]"
-                  : "bottom-0 h-full translate-y-0 scale-100 group-hover:scale-105 lg:-bottom-14 lg:h-[calc(100%+3rem)] lg:translate-y-11 lg:scale-[1.6] lg:group-hover:scale-[1.68]"
+                  ? "-bottom-16 h-[calc(100%+3.5rem)] translate-y-12 scale-[1.8] group-hover:scale-[1.88]"
+                  : "bottom-0 h-full translate-y-0 scale-110 group-hover:scale-115 lg:-bottom-14 lg:h-[calc(100%+3rem)] lg:translate-y-11 lg:scale-[1.8] lg:group-hover:scale-[1.88]"
               }`}
             />
           </span>
