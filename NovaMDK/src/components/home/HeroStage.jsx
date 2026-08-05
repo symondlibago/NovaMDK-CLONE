@@ -389,8 +389,8 @@ function ExploreTreatments({ large = false }) {
               loading="lazy"
               className={`absolute left-1/2 w-auto max-w-none origin-bottom -translate-x-1/2 object-contain object-bottom transition-transform duration-500 ${
                 large
-                  ? "-bottom-16 h-[calc(100%+3.5rem)] translate-y-12 scale-[1.8] group-hover:scale-[1.88]"
-                  : "bottom-0 h-full translate-y-0 scale-110 group-hover:scale-115 lg:-bottom-14 lg:h-[calc(100%+3rem)] lg:translate-y-11 lg:scale-[1.8] lg:group-hover:scale-[1.88]"
+                  ? "-bottom-16 h-[calc(100%+3.5rem)] translate-y-13 scale-[1.68] group-hover:scale-[1.76]"
+                  : "bottom-0 h-full translate-y-0 scale-110 group-hover:scale-115 lg:-bottom-14 lg:h-[calc(100%+3rem)] lg:translate-y-12 lg:scale-[1.68] lg:group-hover:scale-[1.76]"
               }`}
             />
           </span>
