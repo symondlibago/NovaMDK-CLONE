@@ -167,12 +167,21 @@ export default function ProductPage() {
 
       {/* breadcrumb */}
       <div className="mx-auto max-w-[1180px] px-5 pt-6 md:px-10">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <Link to={backLink} className="inline-flex items-center gap-1.5 text-[0.9rem] font-medium text-muted transition-colors hover:text-ink">
-            <ArrowLeft size={15} /> Back to {categoryLabel}
+        {/* Same pill treatment as the shared BackButton on every other page. These
+            stay plain Links rather than that component: back here means "up to the
+            category", not browser history. */}
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            to={backLink}
+            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 py-2 text-[0.88rem] font-medium text-muted transition-all hover:-translate-x-0.5 hover:border-line-strong hover:text-ink"
+          >
+            <ArrowLeft size={16} /> Back to {categoryLabel}
           </Link>
-          <Link to="/" className="inline-flex items-center gap-1.5 text-[0.9rem] font-medium text-muted transition-colors hover:text-ink">
-            <Home size={15} /> Home
+          <Link
+            to="/"
+            className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 py-2 text-[0.88rem] font-medium text-muted transition-all hover:border-line-strong hover:text-ink"
+          >
+            <Home size={16} /> Home
           </Link>
         </div>
       </div>

@@ -275,7 +275,9 @@ export default function Navbar() {
                 </button>
               </div>
               {isKiosk ? (
-                /* Kiosk burger — category sections + sub-menus, Log In / Support at the foot */
+                /* Kiosk burger — category sections, then Portal / Support as buttons
+                   directly under the last one (not pinned to the drawer foot, so
+                   they sit with the list rather than floating away from it). */
                 <div className="flex grow flex-col p-4">
                   {KIOSK_MENU.map((cat) => (
                     <KioskMenuGroup
@@ -286,11 +288,20 @@ export default function Navbar() {
                       close={() => setMobileOpen(false)}
                     />
                   ))}
-                  <div className="mt-auto flex flex-col gap-1 pb-2 pt-6">
-                    <Link to="/portal" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5 rounded-xl px-3 py-3 text-left text-[15px] font-medium text-muted transition-colors hover:bg-surface-2 hover:text-ink">
+                  <div className="mt-5 grid grid-cols-2 gap-2.5 pb-2">
+                    <Link
+                      to="/portal"
+                      onClick={() => setMobileOpen(false)}
+                      /* same accent mix as the marquee / Quick view / Choose your plan */
+                      className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[color-mix(in_oklab,var(--nv-accent)_72%,var(--nv-surface))] px-3 py-3.5 text-[14px] font-semibold text-ink nv-shadow transition-all hover:-translate-y-0.5 hover:bg-[color-mix(in_oklab,var(--nv-accent)_86%,var(--nv-surface))]"
+                    >
                       <LogIn size={16} /> Patient Portal
                     </Link>
-                    <Link to="/contact" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5 rounded-xl px-3 py-3 text-[15px] font-medium text-muted transition-colors hover:bg-surface-2 hover:text-ink">
+                    <Link
+                      to="/contact"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line-strong bg-surface px-3 py-3.5 text-[14px] font-semibold text-ink transition-all hover:-translate-y-0.5 hover:bg-surface-2"
+                    >
                       <LifeBuoy size={16} /> Support
                     </Link>
                   </div>

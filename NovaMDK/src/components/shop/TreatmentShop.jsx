@@ -2,8 +2,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { productsData, visibleProducts } from "../data/products";
+import { programsFor, programProductIds } from "../data/subscriptions";
 import { CompoundedDisclaimer } from "../Compliance";
 import { ProductCard, QuickViewModal } from "./ProductCard";
+import SubscriptionShelf from "./SubscriptionShelf";
 import BackButton from "../ui/BackButton";
 
 // Product ids pinned to the front of a category's listing (marketing priority).
@@ -29,6 +31,13 @@ export default function TreatmentShop({ category, showBack = false }) {
     products[0]?.categoryName ||
     productsData.find((p) => p.categorySlug === category)?.categoryName ||
     "";
+
+  // Dose-ladder programs are shown as subscriptions; their individual vials are
+  // pulled out of the grid below so the same product isn't sold twice on one page.
+  // Categories with no programs get an empty list and render exactly as before.
+  const programs = programsFor(category);
+  const inProgram = programProductIds(category);
+  const oneOff = products.filter((p) => !inProgram.has(p.id));
 
   // Safety net only. Categories with nothing shoppable are commented out of the
   // nav, footer, carousel and categoryMeta, and Treatments.jsx redirects their
@@ -81,12 +90,32 @@ export default function TreatmentShop({ category, showBack = false }) {
           </p>
         </div>
 
-        {/* 2-up on phones, 3-up from tablet/kiosk width, keeps the list scannable */}
-        <div className="grid grid-cols-2 gap-[clamp(0.9rem,1.6vw,1.25rem)] md:grid-cols-3">
-          {products.map((p, i) => (
-            <ProductCard key={p.id} p={p} delay={(i % 3) * 0.05} floatDelay={-(i % 4) * 0.9} onQuickView={setQuickView} />
-          ))}
-        </div>
+        <SubscriptionShelf programs={programs} />
+
+        {oneOff.length > 0 && (
+          <>
+            {programs.length > 0 && (
+              <div className="mb-4 mt-9 sm:mb-5 sm:mt-12">
+                <span className="nv-eyebrow">One-time · No commitment</span>
+                <div className="mt-1.5 flex flex-col gap-1.5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                  <h2 className="font-display text-[1.4rem] font-extrabold leading-tight tracking-tight sm:text-[clamp(1.6rem,3vw,2.1rem)]">
+                    Individual treatments
+                  </h2>
+                  <p className="max-w-[42ch] text-[0.8rem] leading-relaxed text-muted sm:text-right sm:text-[0.92rem]">
+                    Single vials to complement your program — buy once, no subscription required.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* 2-up on phones, 3-up from tablet/kiosk width, keeps the list scannable */}
+            <div className="grid grid-cols-2 gap-[clamp(0.9rem,1.6vw,1.25rem)] md:grid-cols-3">
+              {oneOff.map((p, i) => (
+                <ProductCard key={p.id} p={p} delay={(i % 3) * 0.05} floatDelay={-(i % 4) * 0.9} onQuickView={setQuickView} />
+              ))}
+            </div>
+          </>
+        )}
 
         <div className="mt-10 text-center">
           <Link

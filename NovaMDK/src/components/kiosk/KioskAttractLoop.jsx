@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import useKioskMode from "../../lib/useKioskMode";
 
-const KIOSK_AD_SRC = "/video/kioskads.mp4";
+const KIOSK_AD_SRC = "/video/golden.mp4";
 const DEFAULT_IDLE_MS = 2 * 60 * 1000; // 2 minutes of inactivity
 
 function resolveIdleMs() {

@@ -1,3 +1,6 @@
+export const GHL_SURVEY_ID = "bcbI55IDrwKXviOGwxJa";
+export const GHL_SURVEY_SRC = `https://api.leadconnectorhq.com/widget/survey/${GHL_SURVEY_ID}`;
+
 export const treatmentLabel = (product) =>
   product ? `${product.categoryName} - ${product.name}` : "";
 

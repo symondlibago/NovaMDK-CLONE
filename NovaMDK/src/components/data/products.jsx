@@ -1166,7 +1166,7 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Subcutaneous Injection",
     icon: <Syringe size={16} />,
-    img: "/products/peptides.png",
+    img: "/products/pt-141.avif",
     questionnaireId: "77fef9b3-aa56-4dc6-ac4d-4dc3c04da262",
     highlights: [
       { text: "On-Demand Dosing" },

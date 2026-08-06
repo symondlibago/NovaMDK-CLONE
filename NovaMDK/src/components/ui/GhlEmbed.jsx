@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const SCRIPT_SRC = "https://link.msgsndr.com/js/form_embed.js";
 
@@ -27,23 +28,43 @@ function loadEmbedScript() {
  */
 export default function GhlEmbed({ id, src, title = "Form", minH = 560 }) {
   const frame = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     // Seed a height imperatively so React never fights the script over style.height.
     if (frame.current && !frame.current.style.height) frame.current.style.height = `${minH}px`;
     loadEmbedScript();
+    // A cached frame can finish before React attaches onLoad, which would strand
+    // the skeleton on screen forever.
+    if (frame.current?.contentDocument?.readyState === "complete") setLoaded(true);
   }, [minH]);
 
   return (
-    <iframe
-      ref={frame}
-      id={id}
-      src={src}
-      title={title}
-      scrolling="no"
-      loading="lazy"
-      className="block w-full border-0"
-      style={{ minHeight: minH }}
-    />
+    <div className="relative w-full" style={{ minHeight: minH }}>
+      {!loaded && (
+        <div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-[calc(24px*var(--nv-r-scale,1))] border border-line bg-surface text-muted"
+          role="status"
+          aria-live="polite"
+        >
+          <Loader2 size={26} className="animate-spin text-primary" />
+          <span className="text-[0.9rem] font-medium">Loading the form…</span>
+        </div>
+      )}
+      <iframe
+        ref={frame}
+        id={id}
+        src={src}
+        title={title}
+        scrolling="no"
+        /* Deliberately eager: this frame is the entire reason the page exists, but
+           it sits below the hero, so `lazy` left it un-requested until the visitor
+           scrolled — a stall the kiosk felt as "the contact page is slow". */
+        loading="eager"
+        onLoad={() => setLoaded(true)}
+        className="block w-full border-0"
+        style={{ minHeight: minH }}
+      />
+    </div>
   );
 }

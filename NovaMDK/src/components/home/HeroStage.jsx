@@ -18,18 +18,18 @@ const EASE = [0.22, 0.61, 0.18, 1];
 const FEATURED = {
   eyebrow: "Most Requested",
   title: "Tirzepatide",
-  subtitle: "Metabolic and weight management",
+  subtitle: "Weight Management",
   to: "/treatments/weight-loss",
   img: "/products/tirzepatide-niacinamide.avif",
 };
 
 const SHELF = [
-  { id: 301, label: "Antioxidant Support", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
-  { id: 16, label: "Cellular Energy", short: "NAD+", img: "/products/shelf/vial.png" },
-  { id: 32, label: "Peak Performance", short: "Olympus Peak", img: "/products/olympus-peak.avif" },
-  { id: 302, label: "Skin Rejuvenation", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
+  { id: 301, label: "Antioxidant Care", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
+  { id: 16, label: "Cellular Vitality", short: "NAD+", img: "/products/shelf/nad-plus.png" },
+  { id: 32, label: "Performance Support", short: "Olympus Peak", img: "/products/olympus-peak.avif" },
+  { id: 302, label: "Skin Renewal", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
   { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/nasal.png" },
-  { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/vial.png" },
+  { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/pt-141.png" },
 ];
 
 // Legacy card-wall layouts — only used by the retired KioskHero below; kept

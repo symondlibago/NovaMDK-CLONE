@@ -8,6 +8,8 @@ import SmoothScroll from "./components/SmoothScroll";
 import RouteTransition from "./components/transition/RouteTransition";
 import Platform from "./pages/Platform";
 import KioskAttractLoop from "./components/kiosk/KioskAttractLoop";
+import GhlPrewarm from "./components/ui/GhlPrewarm";
+import { GHL_SURVEY_SRC } from "./lib/ghl";
 const TreatmentsPage = lazy(() => import("./pages/Treatments"));
 const SupplementsPage = lazy(() => import("./pages/Supplements"));
 const ContactPage = lazy(() => import("./pages/Contact"));
@@ -36,6 +38,7 @@ function App() {
         <ScrollToTop />
         <RouteAnalytics />
         <RouteTransition />
+        <GhlPrewarm src={GHL_SURVEY_SRC} />
         <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Platform />} />

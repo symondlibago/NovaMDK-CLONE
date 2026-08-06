@@ -5,6 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Third-party embeds (GHL contact survey, MD Integrations intake/portal) are
+         the slowest thing we load, and every one is a cold cross-origin connection:
+         DNS + TCP + TLS before a single byte of the form arrives. Warming the
+         sockets here overlaps that handshake with our own app boot, which matters
+         most on the kiosk where the visit starts from a cold browser. -->
+    <link rel="preconnect" href="https://api.leadconnectorhq.com" crossorigin />
+    <link rel="preconnect" href="https://link.msgsndr.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
+    <link rel="dns-prefetch" href="https://link.msgsndr.com" />
+    <link rel="dns-prefetch" href="https://patient.mdintegrations.com" />
+
     <title>NovaMDK | Premium Telehealth & Longevity</title>
 
     <meta name="description" content="NovaMDK — personalized supplements and treatments, prescribed online. Dedicated online care, a physician's protocol, delivered fast to your door." />

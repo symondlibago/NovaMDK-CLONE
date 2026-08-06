@@ -5,12 +5,11 @@ import Footer from "../components/Nav/Footer";
 import PageHero from "../components/shop/PageHero";
 import Reveal from "../components/ui/Reveal";
 import GhlEmbed from "../components/ui/GhlEmbed";
+import { GHL_SURVEY_ID, GHL_SURVEY_SRC } from "../lib/ghl";
 
 // The entire contact experience — the info panel, the form, the styling — is built
 // inside the GHL survey, so this page renders the embed alone. Adding our own panel
 // or card around it just duplicates what the survey already draws.
-const GHL_SURVEY_ID = "bcbI55IDrwKXviOGwxJa";
-const GHL_SURVEY_SRC = `https://api.leadconnectorhq.com/widget/survey/${GHL_SURVEY_ID}`;
 
 export default function ContactPage() {
   return (
