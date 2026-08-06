@@ -28,7 +28,7 @@ const SHELF = [
   { id: 16, label: "Cellular Vitality", short: "NAD+", img: "/products/shelf/nad-plus.png" },
   { id: 32, label: "Performance Support", short: "Olympus Peak", img: "/products/olympus-peak.avif" },
   { id: 302, label: "Skin Renewal", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
-  { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/nasal.png" },
+  { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/sermorelin-nasal.png" },
   { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/pt-141.png" },
 ];
 

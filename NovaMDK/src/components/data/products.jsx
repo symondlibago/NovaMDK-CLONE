@@ -424,7 +424,7 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Nasal Spray",
     icon: <Droplets size={16} />,
-    img: "/products/selank.png",
+    img: "/products/sermorelin-nasal.avif",
     questionnaireId: "89a610eb-569e-4db6-9f12-3173bf7c553c",
     highlights: [
       { text: "Needle-Free" },
