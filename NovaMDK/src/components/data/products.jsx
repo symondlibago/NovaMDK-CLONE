@@ -1057,7 +1057,7 @@ export const productsData = [
     shipping: "Discreetly to Your Door",
     dosageForm: "Sublingual Flex-Dose Tablet",
     icon: <Flame size={16} />,
-    img: "/products/dihexa.png",
+    img: "/products/olympus-max.avif",
     questionnaireId: "",
     highlights: [
       { text: "Double-Strength Base" },
