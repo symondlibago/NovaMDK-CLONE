@@ -98,12 +98,12 @@ export default function KioskPage() {
                     and lands on the copy once the grid stacks on phones. */}
                 <div className="relative h-[clamp(340px,44vw,520px)]">
                   <img
-                    src="/kiosk-2.avif"
+                    src="/site/kiosk-2.avif"
                     alt="The NovaMDK website running on a portrait touchscreen kiosk"
                     className="absolute bottom-[-12%] left-[2%] h-[104%] w-auto md:bottom-[-15%] md:h-[122%]"
                   />
                   <img
-                    src="/kiosk-1.avif"
+                    src="/site/kiosk-1.avif"
                     alt="A NovaMDK kiosk showing a patient check-in and queue screen"
                     className="absolute left-[54%] top-[22%] h-[76%] w-auto md:left-[60%] md:h-[94%]"
                   />
@@ -161,13 +161,13 @@ export default function KioskPage() {
               <div className="relative flex min-h-80 items-end justify-center px-3 pt-6 sm:px-5 md:min-h-105 md:pt-9">
                 <div className="relative w-full max-w-xl">
                   <img
-                    src="/kioskmonitor.avif"
+                    src="/site/kioskmonitor.avif"
                     alt="Close-up of the NovaMDK Smart Kiosk touchscreen"
                     loading="lazy"
                     className="h-auto w-full object-contain drop-shadow-2xl"
                   />
                   <video
-                    src="/right-vid.mp4"
+                    src="/video/right-vid.mp4"
                     autoPlay
                     muted
                     loop

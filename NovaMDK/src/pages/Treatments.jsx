@@ -18,10 +18,10 @@ import { track, EVENTS } from "../lib/analytics";
 const FAQ = lazy(() => import("../components/FAQ"));
 
 const CAT_PHOTOS = {
-  "weight-loss": { photo: "/cat-weightloss-right.webp", tone: "light", photoPos: "right 16%" },
-  "unisex-skin-health": { photo: "/cat-skinhealth.webp", tone: "light", photoPos: "right center" },
-  "unisex-sports-medicine": { photo: "/cat-sportsmedicine.webp", tone: "dark", photoPos: "right center" },
-  "unisex-anti-aging-rx": { photo: "/cat-longetivity.webp", overlay: "/cat-longetivity-bottle.webp", tone: "dark", photoPos: "right center" },
+  "weight-loss": { photo: "/site/cat-weightloss-right.webp", tone: "light", photoPos: "right 16%" },
+  "unisex-skin-health": { photo: "/site/cat-skinhealth.webp", tone: "light", photoPos: "right center" },
+  "unisex-sports-medicine": { photo: "/site/cat-sportsmedicine.webp", tone: "dark", photoPos: "right center" },
+  "unisex-anti-aging-rx": { photo: "/site/cat-longetivity.webp", overlay: "/site/cat-longetivity-bottle.webp", tone: "dark", photoPos: "right center" },
 };
 
 // Mirror the homepage funnels — each tile browses that goal's shoppable catalog.
@@ -190,7 +190,7 @@ export default function TreatmentsPage() {
               items={TREATMENT_CATS}
               dark
               featured
-              art="/pill.avif"
+              art="/site/pill.avif"
               onItemClick={(it) => track(EVENTS.CATEGORY_SELECTED, { category: it.goal, source: "treatments" })}
             />
           </section>  

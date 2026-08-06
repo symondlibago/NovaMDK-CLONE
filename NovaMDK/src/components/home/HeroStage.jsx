@@ -61,7 +61,7 @@ function cornerClass(index, cols, rows) {
 function CategoryIcon({ size = 60, className = "" }) {
   return (
     <img
-      src="/novapill.avif"
+      src="/site/novapill.avif"
       alt=""
       aria-hidden="true"
       loading="lazy"
@@ -275,7 +275,7 @@ function KioskPromoCard({ kiosk = false }) {
       className={`overflow-hidden rounded-3xl ${kiosk ? "mt-3" : "mt-4"}`}
     >
       <video
-        src="/feeling-your-best.mp4"
+        src="/video/feeling-your-best.mp4"
         autoPlay
         loop
         muted
@@ -300,7 +300,7 @@ function GoalRow({ tag, name, shortName = null, to, onClick, icon = null, delay 
         className={`group flex items-center justify-start border-b border-line transition-colors hover:border-primary/40 ${big ? "gap-5 py-5" : "gap-2 py-2.5 sm:gap-3.5 sm:py-3"}`}
       >
         <span className={`grid shrink-0 place-items-center rounded-full border border-line bg-surface nv-shadow transition-transform duration-300 group-hover:scale-105 ${big ? "h-18 w-18" : "h-8 w-8 sm:h-11 sm:w-11"}`}>
-          {icon || <img src="/novapill.avif" alt="" aria-hidden="true" loading="lazy" className={`w-auto object-contain ${big ? "h-10" : "h-4.5 sm:h-6"}`} />}
+          {icon || <img src="/site/novapill.avif" alt="" aria-hidden="true" loading="lazy" className={`w-auto object-contain ${big ? "h-10" : "h-4.5 sm:h-6"}`} />}
         </span>
         <span className="min-w-0 text-left">
           <span className={`block truncate font-mono uppercase tracking-widest text-accent sm:tracking-[0.16em] ${big ? "text-[0.78rem]" : "text-[0.46rem] sm:text-[0.6rem]"}`}>{tag}</span>
@@ -491,7 +491,7 @@ function EditorialHero({ compact = false, forceWide = false }) {
       {!compact && (
         <div className={`pointer-events-none absolute inset-y-0 right-0 ${wide ? "block w-[80%]" : "hidden w-[65%] lg:block"}`}>
           <video
-            src={wide ? "/right-side-portrait.mp4" : "/right-vid.mp4"}
+            src={wide ? "/video/right-side-portrait.mp4" : "/video/right-vid.mp4"}
             autoPlay loop muted playsInline
             className="h-full w-full object-cover object-right"
           />
@@ -507,14 +507,14 @@ function EditorialHero({ compact = false, forceWide = false }) {
       )}
       {!compact && !wide && (
         <div className="pointer-events-none relative lg:hidden">
-          <video src="/right-vid.mp4" autoPlay loop muted playsInline className="block h-76 w-full object-cover sm:h-88" />
+          <video src="/video/right-vid.mp4" autoPlay loop muted playsInline className="block h-76 w-full object-cover sm:h-88" />
         </div>
       )}
 
       {/* Overlay layout — full-bleed portrait video with the headline on top */}
       {compact && (
         <div className="relative">
-          <video src="/right-side-portrait.mp4" autoPlay loop muted playsInline className="block h-120 w-full object-cover" />
+          <video src="/video/right-side-portrait.mp4" autoPlay loop muted playsInline className="block h-120 w-full object-cover" />
           {/* video stays clean — only a short blend at the very bottom into the page bg */}
           <span
             className="absolute inset-x-0 -bottom-0.5 h-28"
@@ -607,7 +607,7 @@ function KioskHero({ kiosk }) {
       {/* Ken-burns background photo + parallax */}
       <motion.div style={{ y: bgY }} className="absolute -inset-[8%] -z-30 will-change-transform">
         <img
-          src="/home-hero.avif"
+          src="/site/home-hero.avif"
           alt=""
           aria-hidden="true"
           className="nv-kenburns h-full w-full object-cover [object-position:62%_38%] [filter:grayscale(0.45)_saturate(0.85)_contrast(1.02)]"

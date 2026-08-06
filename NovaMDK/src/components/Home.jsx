@@ -59,19 +59,19 @@ const HOW_STEPS = [
   {
     n: "01", eyebrow: "Step one", title: "Pick a treatment",
     desc: "Browse doctor-formulated options built around your goal.",
-    img: "/visit-phone.avif", alt: "Choosing a treatment on a tablet",
+    img: "/site/visit-phone.avif", alt: "Choosing a treatment on a tablet",
     cta: "Browse treatments", to: "/treatments",
   },
   {
     n: "02", eyebrow: "Step two", title: "Talk to a doctor",
     desc: "Answer a few questions and a licensed provider reviews your plan and prescribes what fits.",
-    img: "/doctor-consult.avif", alt: "A licensed doctor on a telehealth consultation",
+    img: "/site/doctor-consult.avif", alt: "A licensed doctor on a telehealth consultation",
     cta: "Start your assessment", to: "/start",
   },
   {
     n: "03", eyebrow: "Step three", title: "Delivered discreetly",
     desc: "Approved treatment ships free in plain, unmarked packaging, right to your door.",
-    img: "/courier-delivery.avif", alt: "A courier delivering a discreet package",
+    img: "/site/courier-delivery.avif", alt: "A courier delivering a discreet package",
     cta: "See treatments", to: "/treatments",
   },
 ];
@@ -160,7 +160,7 @@ export default function Home() {
         <Reveal>
           <div className="relative grid min-h-[clamp(300px,42vw,460px)] items-center overflow-hidden rounded-[calc(28px*var(--nv-r-scale,1))]">
             <div className="absolute inset-0 z-0">
-              <Photo src="/outdoor-group.avif" alt="A group of people standing together outdoors" className="h-full w-full" imgClassName="object-cover" />
+              <Photo src="/site/outdoor-group.avif" alt="A group of people standing together outdoors" className="h-full w-full" imgClassName="object-cover" />
             </div>
             <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(100deg, color-mix(in oklab, var(--nv-ink-panel) 86%, transparent) 0%, color-mix(in oklab, var(--nv-ink-panel) 55%, transparent) 52%, color-mix(in oklab, var(--nv-ink-panel) 18%, transparent) 100%)" }} />
             <div className="relative z-10 max-w-[34rem] p-[clamp(1.8rem,5vw,3rem)] text-white">

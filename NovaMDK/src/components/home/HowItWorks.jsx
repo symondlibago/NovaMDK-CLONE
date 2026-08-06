@@ -75,7 +75,7 @@ export default function HowItWorks() {
             {/* Photo */}
             <div className="relative min-h-[320px] md:min-h-0">
               <div className="absolute inset-0">
-                <Photo src="/how-it-works.avif" alt="A member completing their online visit on a laptop at home" className="h-full w-full" imgClassName="object-cover" />
+                <Photo src="/site/how-it-works.avif" alt="A member completing their online visit on a laptop at home" className="h-full w-full" imgClassName="object-cover" />
               </div>
             </div>
           </div>

@@ -33,17 +33,17 @@ const treatmentItems = [
    plain link for now; restore this array + the NavDropdown/MobileGroup to bring the
    peptide menu back.
 const supplementItems = [
-  { name: "Semaglutide", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "Tirzepatide", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "Retatrutide (GLP-3)", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "BPC-157", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "NAD+", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "GHK-Cu", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "Thymosin Alpha 1", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "MOTS-C", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "IGF-1-LR3", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "Tesamorelin", img: "/luvirasupplement.avif", link: "/supplements" },
-  { name: "Glow Blend", img: "/luvirasupplement.avif", link: "/supplements" },
+  { name: "Semaglutide", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "Tirzepatide", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "Retatrutide (GLP-3)", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "BPC-157", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "NAD+", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "GHK-Cu", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "Thymosin Alpha 1", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "MOTS-C", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "IGF-1-LR3", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "Tesamorelin", img: "/site/luvirasupplement.avif", link: "/supplements" },
+  { name: "Glow Blend", img: "/site/luvirasupplement.avif", link: "/supplements" },
 ];
 */
 

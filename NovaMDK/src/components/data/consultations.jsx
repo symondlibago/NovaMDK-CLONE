@@ -7,7 +7,7 @@ export const CONSULTS = {
     short: "Weight Loss",
     blurb: "Address the biology behind weight — appetite, cravings, metabolism.",
     Icon: Scale,
-    img: "/supplementpill.avif",
+    img: "/site/supplementpill.avif",
     goalSlug: "weight-loss",
     steps: [
       { t: "intro", eyebrow: "Weight & Metabolism", title: "Let’s unlock your best body.",
@@ -37,7 +37,7 @@ export const CONSULTS = {
     short: "Skin Health",
     blurb: "Prescription-strength care for acne, tone, texture and fine lines.",
     Icon: Sparkles,
-    img: "/pill.avif",
+    img: "/site/pill.avif",
     goalSlug: "unisex-skin-health",
     steps: [
       { t: "intro", eyebrow: "Dermatology", title: "Let’s get you glowing.",
@@ -67,7 +67,7 @@ export const CONSULTS = {
     short: "Sexual Health",
     blurb: "Discreet, doctor-backed treatment delivered to your door.",
     Icon: Heart,
-    img: "/menpill.avif",
+    img: "/site/menpill.avif",
     goalSlug: "mens-health",
     steps: [
       { t: "intro", eyebrow: "Sexual Health", title: "Let’s talk about better intimacy.",
@@ -97,7 +97,7 @@ export const CONSULTS = {
     short: "Recovery",
     blurb: "Targeted, doctor-guided recovery — less downtime, fewer re-injuries.",
     Icon: Activity,
-    img: "/sportpill.avif",
+    img: "/site/sportpill.avif",
     goalSlug: "unisex-sports-medicine",
     steps: [
       { t: "intro", eyebrow: "Sports Medicine", title: "Let’s get you recovering faster.",
@@ -127,7 +127,7 @@ export const CONSULTS = {
     short: "Longevity",
     blurb: "Support energy, skin, strength and healthspan — proactively.",
     Icon: InfinityIcon,
-    img: "/antipill.avif",
+    img: "/site/antipill.avif",
     goalSlug: "unisex-anti-aging-rx",
     steps: [
       { t: "intro", eyebrow: "Longevity & Anti-Aging", title: "Let’s help you stay timeless.",

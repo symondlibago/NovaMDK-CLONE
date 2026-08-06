@@ -101,7 +101,7 @@ export default function SupplementsPage() {
             </Link>
           </Reveal>
           <Reveal delay={0.08}>
-            <Photo src="/amber-bottles.avif" alt="Hands holding two amber supplement bottles" className="min-h-[320px] w-full rounded-[calc(26px*var(--nv-r-scale,1))] border border-line nv-shadow" imgClassName="object-cover" />
+            <Photo src="/site/amber-bottles.avif" alt="Hands holding two amber supplement bottles" className="min-h-[320px] w-full rounded-[calc(26px*var(--nv-r-scale,1))] border border-line nv-shadow" imgClassName="object-cover" />
           </Reveal>
         </div>
 
