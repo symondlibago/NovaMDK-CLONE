@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Link, useParams, useSearchParams, Navigate } from "react-router-dom";
 import {
-  Stethoscope, Truck, Ban, ShieldCheck, ClipboardCheck, PackageOpen,
+  Stethoscope, Truck, Lock, FlaskConical, ShieldCheck, ClipboardCheck, PackageOpen,
 } from "lucide-react";
 import Seo from "../components/Seo";
 import Navbar from "../components/Nav/Navbar";
@@ -17,11 +17,24 @@ import { track, EVENTS } from "../lib/analytics";
 
 const FAQ = lazy(() => import("../components/FAQ"));
 
-const CAT_PHOTOS = {
-  "weight-loss": { photo: "/site/cat-weightloss-right.webp", tone: "light", photoPos: "right 16%" },
-  "unisex-skin-health": { photo: "/site/cat-skinhealth.webp", tone: "light", photoPos: "right center" },
-  "unisex-sports-medicine": { photo: "/site/cat-sportsmedicine.webp", tone: "dark", photoPos: "right center" },
-  "unisex-anti-aging-rx": { photo: "/site/cat-longetivity.webp", overlay: "/site/cat-longetivity-bottle.webp", tone: "dark", photoPos: "right center" },
+/* Cut-out art per goal (2026-08 design). Each is a square master anchored to the
+   card's right edge — see CutoutCard. The right-nudges are measured, not eyeballed:
+   the subject sits at a different left edge inside each square (weight 20%, recover
+   30%, longevity 43%, skin 48%, the pill pair 31%), and a square tall enough to fill
+   the card is wider than the space left of the copy. Shifting right by the shortfall
+   keeps every subject clear of the text block at the 3-up desktop width. */
+const CAT_ART = {
+  "weight-loss": { cutout: "/site/goals/weight-management.avif" },
+  "mens-health": {
+    cutout: "/site/goals/sexual-wellness.avif",
+    cutoutClass: "-top-[7%] h-[114%] right-[-8%]",
+  },
+  "unisex-sports-medicine": {
+    cutout: "/site/goals/recover-soothe.avif",
+    cutoutClass: "-top-[4%] h-[112%] right-[-10%]",
+  },
+  "unisex-anti-aging-rx": { cutout: "/site/goals/longevity.avif" },
+  "unisex-skin-health": { cutout: "/site/goals/skin-health.avif" },
 };
 
 // Mirror the homepage funnels — each tile browses that goal's shoppable catalog.
@@ -32,7 +45,7 @@ const TREATMENT_CATS = CONSULT_ORDER.map((k) => ({
   cta: "Browse treatments",
   goal: CONSULTS[k].goalSlug,
   link: `/treatments/${CONSULTS[k].goalSlug}`,
-  ...(CAT_PHOTOS[CONSULTS[k].goalSlug] || {}),
+  ...(CAT_ART[CONSULTS[k].goalSlug] || {}),
 }));
 
 // Valid product categories a quiz can land on (everything but pure supplements).
@@ -44,10 +57,10 @@ const VALID_GOALS = new Set(
 );
 
 const TRUST = [
-  { icon: Stethoscope, label: "U.S. licensed providers" },
-  { icon: Truck, label: "Fast, discreet delivery" },
-  { icon: Ban, label: "No subscription lock-in" },
-  { icon: ShieldCheck, label: "FDA-regulated pharmacies" },
+  { icon: ShieldCheck, label: "Doctor-guided care", sub: "Always backed by medical experts." },
+  { icon: Lock, label: "Discreet & confidential", sub: "Private care, delivered discreetly." },
+  { icon: FlaskConical, label: "Evidence-based treatments", sub: "Science-backed. Results-focused." },
+  { icon: Truck, label: "Delivered to your door", sub: "Fast, discreet, and convenient." },
 ];
 
 const STEPS = [
@@ -65,12 +78,19 @@ const STATS = [
 /* ------------------------------- sections ------------------------------- */
 function TrustBand() {
   return (
-    <section className="border-y border-line bg-surface">
-      <div className="mx-auto grid max-w-[1180px] grid-cols-2 gap-x-6 gap-y-5 px-5 py-6 md:grid-cols-4 md:px-10">
+    /* A contained card rather than a full-bleed band, so it reads as the closing
+       row of the goal grid above it. */
+    <section className="mx-auto max-w-[1180px] px-5 md:px-10">
+      <div className="grid grid-cols-1 gap-x-6 gap-y-5 rounded-[calc(18px*var(--nv-r-scale,1))] border border-line bg-surface px-6 py-5 sm:grid-cols-2 lg:grid-cols-4">
         {TRUST.map((t) => (
-          <div key={t.label} className="flex items-center gap-3">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-surface-2 text-primary"><t.icon size={16} /></span>
-            <span className="text-[0.88rem] font-medium leading-tight">{t.label}</span>
+          <div key={t.label} className="flex items-start gap-3">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[calc(9px*var(--nv-r-scale,1))] bg-surface-2 text-primary">
+              <t.icon size={15} strokeWidth={1.9} />
+            </span>
+            <span className="flex min-w-0 flex-col">
+              <span className="text-[0.82rem] font-bold leading-tight text-ink">{t.label}</span>
+              <span className="mt-0.5 text-[0.76rem] leading-snug text-muted">{t.sub}</span>
+            </span>
           </div>
         ))}
       </div>
@@ -188,9 +208,7 @@ export default function TreatmentsPage() {
             </div>
             <CategoryGrid
               items={TREATMENT_CATS}
-              dark
               featured
-              art="/site/pill.avif"
               onItemClick={(it) => track(EVENTS.CATEGORY_SELECTED, { category: it.goal, source: "treatments" })}
             />
           </section>  

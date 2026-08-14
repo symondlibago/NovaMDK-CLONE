@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams, useNavigate, Navigate, Link } from "react-router-dom";
 import { ArrowLeft, Loader2, Lock, CreditCard, CheckCircle2, ShieldCheck } from "lucide-react";
 import { productsData } from "../components/data/products";
 import Seo from "../components/Seo";
 
-const MDI_ORIGIN = "https://patient.mdintegrations.com";
+const MDI_ORIGIN = "https://patient.novamdk.com";
 const PAYMENT_TRIGGER_EVENTS = ["finish"];
-const PAYMENT_TRIGGER_STEPS = ["thank-you"];
+const PAYMENT_TRIGGER_STEPS = ["identification", "thank-you"];
 
 /* Embedded MDIntegrations patient intake — the questionnaire runs in an iframe */
 export default function IntakePage() {
@@ -34,9 +34,10 @@ export default function IntakePage() {
         sessionStorage.setItem("mdi_encounter", JSON.stringify(msg.data));
       }
       if (paid) return;
+      const step = msg.data?.step || msg.data?.route || null;
       if (
         PAYMENT_TRIGGER_EVENTS.includes(msg.event) ||
-        (msg.event === "step" && PAYMENT_TRIGGER_STEPS.includes(msg.data?.step))
+        (msg.event === "step" && PAYMENT_TRIGGER_STEPS.includes(step))
       ) {
         setPayOpen(true);
       }
@@ -51,9 +52,29 @@ export default function IntakePage() {
     return () => clearTimeout(t);
   }, [payDemo, loaded, paid]);
 
+  const released = useRef(false);
+  useEffect(() => {
+    if (!paid || !caseId || released.current) return;
+    released.current = true;
+
+    let releaseToken = null;
+    try { releaseToken = sessionStorage.getItem("mdi_release_token"); } catch { /* private mode */ }
+
+    fetch("/api/mdi-release", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ case_id: caseId, release_token: releaseToken }),
+    })
+      .then((r) => { if (!r.ok) throw new Error(`release ${r.status}`); })
+      .catch((e) => {
+        released.current = false;
+        console.error("MDI release failed:", e.message);
+      });
+  }, [paid, caseId]);
+
   if (!token) return <Navigate to="/treatments" replace />;
 
-  const intakeSrc = `https://patient.mdintegrations.com?token=${encodeURIComponent(token)}`;
+  const intakeSrc = `${MDI_ORIGIN}?token=${encodeURIComponent(token)}`;
   const exitTo = pid ? `/product/${pid}` : "/treatments";
 
   return (
@@ -99,7 +120,6 @@ export default function IntakePage() {
         <PaymentGateModal
           productName={productName || product?.name || "Your treatment"}
           price={product?.price || "$0"}
-          caseId={caseId}
           onPaid={() => {
             setPaid(true);
             setPayOpen(false);
@@ -110,30 +130,12 @@ export default function IntakePage() {
   );
 }
 
-/* Placeholder checkout — blocks the intake until "payment" completes, then
-   releases the held MDI case so it enters the clinician flow. Swap the fake
-   charge delay for the real processor (Stripe/Square) when it's chosen. */
-function PaymentGateModal({ productName, price, caseId, onPaid }) {
+function PaymentGateModal({ productName, price, onPaid }) {
   const [status, setStatus] = useState("idle"); // idle | processing | error | done
 
   const pay = async () => {
     setStatus("processing");
     await new Promise((r) => setTimeout(r, 1600)); // fake card charge
-    if (caseId) {
-      try {
-        let releaseToken = null;
-        try { releaseToken = sessionStorage.getItem("mdi_release_token"); } catch { /* private mode */ }
-        const res = await fetch("/api/mdi-release", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ case_id: caseId, release_token: releaseToken }),
-        });
-        if (!res.ok) throw new Error("release failed");
-      } catch {
-        setStatus("error");
-        return;
-      }
-    }
     setStatus("done");
     setTimeout(onPaid, 1400);
   };

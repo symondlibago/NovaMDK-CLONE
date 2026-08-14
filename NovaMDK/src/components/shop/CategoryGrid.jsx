@@ -111,6 +111,65 @@ function PhotoCard({ it, onClick, hero = false }) {
   );
 }
 
+function CutoutCard({ it, onClick, hero = false }) {
+  return (
+    <Link
+      to={it.link}
+      onClick={onClick}
+      className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-[calc(20px*var(--nv-r-scale,1))] border bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:nv-shadow-lg ${
+        hero
+          ? "border-accent/45 min-h-[clamp(206px,26vw,252px)] p-6 sm:p-8"
+          : "border-line min-h-[clamp(184px,22vw,216px)] p-6 hover:border-accent/40"
+      }`}
+    >
+      {/* warm wash so the cutout sits on tone rather than floating on flat white */}
+      <span
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(72% 108% at 100% 42%, color-mix(in srgb, var(--nv-accent) 11%, transparent), transparent 72%)" }}
+      />
+
+      <img
+        src={it.cutout}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className={`pointer-events-none absolute right-0 aspect-square w-auto max-w-none object-contain transition-transform duration-700 group-hover:scale-[1.04] ${
+          it.cutoutClass || (hero ? "-top-[6%] h-[112%]" : "-top-[7%] h-[114%]")
+        }`}
+      />
+
+      {/* 56% is the budget the cutout offsets are measured against — widening it
+          walks the copy back under the art. */}
+      <div className="relative z-[2] max-w-[56%]">
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-primary">{it.tag}</span>
+        <h3
+          className={`mt-2 font-display font-bold leading-[1.12] tracking-tight text-ink ${
+            hero ? "text-[clamp(1.5rem,3.1vw,2rem)]" : "text-[clamp(1.1rem,1.9vw,1.3rem)]"
+          }`}
+        >
+          {it.name}
+        </h3>
+        {it.blurb && (
+          <p className={`mt-2 leading-snug text-muted ${hero ? "max-w-[30ch] text-[0.92rem]" : "max-w-[24ch] text-[0.82rem]"}`}>
+            {it.blurb}
+          </p>
+        )}
+      </div>
+
+      <span
+        className={`relative z-[2] mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-primary/35 py-1.5 pl-1.5 font-semibold text-primary transition-colors duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-on-primary ${
+          hero ? "pr-5 text-[0.86rem]" : "pr-4 text-[0.8rem]"
+        }`}
+      >
+        <span className="grid h-6 w-6 place-items-center rounded-full border border-primary/35 transition-colors duration-300 group-hover:border-on-primary/45">
+          <ArrowRight size={12} strokeWidth={2.4} />
+        </span>
+        {it.cta || "Browse treatments"}
+      </span>
+    </Link>
+  );
+}
+
 function LightCard({ it, art, onClick, hero = false }) {
   return (
     <Link
@@ -149,14 +208,12 @@ function LightCard({ it, art, onClick, hero = false }) {
 }
 
 export default function CategoryGrid({ items, art = "/site/pills-float.avif", dark = false, featured = false, onItemClick }) {
-  // Bento layout: the first tile leads as a wide hero spanning the top, the rest
-  // fall into a clean 2×2 (tablet) / 3-up (desktop) beneath — no orphan gaps.
   return (
     <div className="grid grid-cols-1 items-stretch gap-[clamp(0.8rem,1.6vw,1.1rem)] sm:grid-cols-2 lg:grid-cols-3">
       {items.map((it, i) => {
         const onClick = onItemClick ? () => onItemClick(it) : undefined;
         const hero = featured && i === 0;
-        const Card = it.photo ? PhotoCard : dark ? DarkCard : LightCard;
+        const Card = it.cutout ? CutoutCard : it.photo ? PhotoCard : dark ? DarkCard : LightCard;
         return (
           <Reveal as="div" key={it.name} delay={(i % 3) * 0.06} className={`h-full ${hero ? "sm:col-span-2" : ""}`}>
             <Card it={it} art={art} onClick={onClick} hero={hero} />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquareText, ArrowRight, Plus, MousePointerClick } from "lucide-react";
 import Reveal from "./ui/Reveal";
@@ -226,10 +227,13 @@ export default function FAQ() {
                 <p className="text-center text-[0.95rem] font-medium text-muted">
                     Still have questions? Our care team is here to help.
                 </p>
-                <button className="group flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-full border border-line-strong bg-surface px-8 py-3.5 text-[0.95rem] font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-primary nv-shadow md:w-auto">
+                <Link
+                    to="/contact"
+                    className="group flex w-full cursor-pointer items-center justify-center gap-2.5 rounded-full border border-line-strong bg-surface px-8 py-3.5 text-[0.95rem] font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-primary nv-shadow md:w-auto"
+                >
                     Message Care Team
                     <MessageSquareText size={16} className="text-muted transition-colors group-hover:text-primary" strokeWidth={2} />
-                </button>
+                </Link>
             </Reveal>
 
         </div>

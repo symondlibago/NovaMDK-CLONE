@@ -22,30 +22,16 @@ const EASE = [0.16, 1, 0.3, 1];
 
 // Mirror the real treatment categories (see data/consultations.jsx). Each item
 const treatmentItems = [
-  { name: "Weight Loss", img: "/products/tirzepatide-niacinamide.avif", link: "/treatments/weight-loss" },
+  { name: "Weight Loss", img: "/products/tirzepatide.avif", link: "/treatments/weight-loss" },
   { name: "Anti-Aging", img: "/products/nad-plus.avif", link: "/treatments/unisex-anti-aging-rx" },
   { name: "Skin Health", img: "/products/luminance.avif", link: "/treatments/unisex-skin-health" },
   { name: "Sexual Health", img: "/products/olympus-peak.avif", link: "/treatments/mens-health" },
   { name: "Sports Medicine", img: "/products/ldn.avif", link: "/treatments/unisex-sports-medicine" },
 ];
 
-/* Peptide molecule list HIDDEN at client request (2026-06-20). "Supplements" is a
-   plain link for now; restore this array + the NavDropdown/MobileGroup to bring the
-   peptide menu back.
-const supplementItems = [
-  { name: "Semaglutide", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "Tirzepatide", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "Retatrutide (GLP-3)", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "BPC-157", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "NAD+", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "GHK-Cu", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "Thymosin Alpha 1", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "MOTS-C", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "IGF-1-LR3", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "Tesamorelin", img: "/site/luvirasupplement.avif", link: "/supplements" },
-  { name: "Glow Blend", img: "/site/luvirasupplement.avif", link: "/supplements" },
-];
-*/
+/* The peptide molecule menu listed the LUVIRA sub-lines (Semaglutide, BPC-157,
+   MOTS-C, …). That whole line was dropped from the catalog on 2026-08-05, so the
+   menu it fed is gone with it — "Supplements" stays a plain link. */
 
 /* --------------------------- desktop dropdown --------------------------- */
 function NavDropdown({ title, items, viewAllLink, openOnClick = false }) {
@@ -213,7 +199,9 @@ export default function Navbar() {
             <div className="hidden items-center gap-7 lg:flex">
               <NavDropdown title="Treatments" viewAllLink="/treatments" items={treatmentItems} />
               <Link to="/supplements" className="py-2 text-[15px] font-medium text-muted transition-colors hover:text-ink">Supplements</Link>
+              {/* Kiosk hidden at client request (2026-08-11) — route still live, just unlinked.
               <Link to="/kiosk" className="py-2 text-[15px] font-medium text-muted transition-colors hover:text-ink">Kiosk</Link>
+              */}
               <Link to="/contact" className="py-2 text-[15px] font-medium text-muted transition-colors hover:text-ink">Contact</Link>
             </div>
           )}
@@ -224,7 +212,9 @@ export default function Navbar() {
               {/* touch screen: tap opens the dropdown instead of jumping to /treatments */}
               <NavDropdown title="Treatments" viewAllLink="/treatments" items={treatmentItems} openOnClick />
               <Link to="/supplements" className="py-2 text-[15px] font-medium text-muted transition-colors hover:text-ink">Supplements</Link>
+              {/* Kiosk hidden at client request (2026-08-11) — route still live, just unlinked.
               <Link to="/kiosk" className="py-2 text-[15px] font-medium text-muted transition-colors hover:text-ink">Kiosk</Link>
+              */}
             </div>
           )}
 
@@ -312,9 +302,11 @@ export default function Navbar() {
                   <Link to="/supplements" onClick={() => setMobileOpen(false)} className="flex items-center justify-between border-b border-line py-5 text-[17px] font-medium text-ink">
                     Supplements <ArrowRight size={16} className="text-muted" />
                   </Link>
+                  {/* Kiosk hidden at client request (2026-08-11) — route still live, just unlinked.
                   <Link to="/kiosk" onClick={() => setMobileOpen(false)} className="flex items-center justify-between border-b border-line py-5 text-[17px] font-medium text-ink">
                     Kiosk <ArrowRight size={16} className="text-muted" />
                   </Link>
+                  */}
                   <Link to="/portal" onClick={() => setMobileOpen(false)} className="flex items-center justify-between border-b border-line py-5 text-[17px] font-medium text-ink">
                     Patient Portal <ArrowRight size={16} className="text-muted" />
                   </Link>

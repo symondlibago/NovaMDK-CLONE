@@ -21,6 +21,8 @@ const DEVICE_ICON = {
 };
 
 /* ----------------------------- device preview ----------------------------- */
+const BEZEL = 10; // frame border, drawn outside the declared viewport
+
 function DevicePreview() {
   const { device, devices, setDevice, palette, typography, weight, italic, letterSpacing, lineHeight, radius, paletteOverrides, kioskLayout, kioskLayouts, setKioskLayout } = useTheme();
   const active = devices.find((d) => d.id === device);
@@ -33,7 +35,7 @@ function DevicePreview() {
     const recalc = () => {
       const availW = window.innerWidth - 120;
       const availH = window.innerHeight - 150;
-      setScale(Math.min(1, availW / active.w, availH / active.h));
+      setScale(Math.min(1, availW / (active.w + BEZEL * 2), availH / (active.h + BEZEL * 2)));
     };
     recalc();
     window.addEventListener("resize", recalc);
@@ -93,17 +95,23 @@ function DevicePreview() {
 
       <div className="flex flex-1 items-center justify-center overflow-hidden">
         <div
-          style={{ width: active.w * scale, height: active.h * scale }}
+          style={{ width: (active.w + BEZEL * 2) * scale, height: (active.h + BEZEL * 2) * scale }}
           className="relative"
         >
+          {/* box-content is load-bearing: preflight makes everything border-box, so
+              the bezel used to eat 2×10px out of the declared size and the iframe
+              rendered a 814px viewport while the caption claimed 834. That 20px
+              straddles real breakpoints, so the preview could sit on the opposite
+              side of one from the device it was imitating. */}
           <div
             style={{
               width: active.w,
               height: active.h,
+              borderWidth: BEZEL,
               transform: `scale(${scale})`,
               transformOrigin: "top left",
             }}
-            className="overflow-hidden rounded-[34px] border-[10px] border-[#1b1d20] bg-bg shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)]"
+            className="box-content overflow-hidden rounded-[34px] border-[#1b1d20] bg-bg shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)]"
           >
             <iframe
               key={frameKey}

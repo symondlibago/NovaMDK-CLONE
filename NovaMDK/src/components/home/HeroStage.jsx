@@ -20,16 +20,20 @@ const FEATURED = {
   title: "Tirzepatide",
   subtitle: "Weight Management",
   to: "/treatments/weight-loss",
-  img: "/products/tirzepatide-niacinamide.avif",
+  img: "/products/tirzepatide.avif",
 };
 
+/* Every id here must be a LIVE product — a hidden one bounces the visitor straight
+   back off the product page. Rebuilt 2026-08-11 when the catalog was cut to the
+   client's 20-product list, which retired the Glutaryl, Copper, Sermorelin and
+   PT-141 tiles. One per live category, plus a second weight-loss form. */
 const SHELF = [
-  { id: 301, label: "Antioxidant Care", short: "Glutathione", img: "/products/shelf/tpl-glutathione-serum.webp" },
+  { id: 1, label: "Metabolic health support", short: "Semaglutide", img: "/products/shelf/semaglutide.png" },
   { id: 16, label: "Cellular Vitality", short: "NAD+", img: "/products/shelf/nad-plus.png" },
-  { id: 32, label: "Performance Support", short: "Olympus Peak", img: "/products/olympus-peak.avif" },
-  { id: 302, label: "Skin Renewal", short: "Copper Tri-Peptide", img: "/products/shelf/copper.png" },
-  { id: 11, label: "Healthy Aging", short: "Sermorelin", img: "/products/shelf/sermorelin-nasal.png" },
-  { id: 37, label: "Sexual Wellness", short: "PT-141", img: "/products/shelf/pt-141.png" },
+  { id: 32, label: "Performance Support", short: "Olympus Peak", img: "/products/shelf/olympus-peak.png" },
+  { id: 29, label: "Skin Renewal", short: "Luminance", img: "/products/shelf/luminance.png" },
+  { id: 26, label: "Recovery Support", short: "Low-Dose Naltrexone", img: "/products/shelf/ldn.png" },
+  { id: 13, label: "Needle-free GLP-1", short: "SubMagna Drops", img: "/products/shelf/submagna.png" },
 ];
 
 // Legacy card-wall layouts — only used by the retired KioskHero below; kept

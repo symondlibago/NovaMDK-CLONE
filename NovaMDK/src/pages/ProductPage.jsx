@@ -90,6 +90,7 @@ export default function ProductPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           questionnaire_id: product.questionnaireId || DEFAULT_QUESTIONNAIRE_ID,
+          case_offering_id: product.caseOfferingId || undefined,
           patient: patient?.email ? patient : null,
           consent: patient?.consent || null,
         }),
@@ -99,17 +100,6 @@ export default function ProductPage() {
       // Contact-only submit + no MDI record found: the modal collects the
       // rest of the profile (steps 2–3) before we mint the voucher.
       if (voucher.need_profile) return { needProfile: true };
-
-      // The one and only CRM write, deliberately placed after the profile is
-      // complete. Syncing at the email gate meant every abandoned funnel — and
-      // every mistyped address — left a contact behind with nothing but an
-      // email, so the CRM filled with junk rows.
-      //
-      // Reaching this line means the profile exists: either MDI recognised a
-      // returning patient (who never sees steps 1–3), or a new patient finished
-      // step 3 and MDI created them. `patient_profile` is MDI's own record and
-      // is authoritative; fall back to the modal's data if MDI couldn't be
-      // read, so a completed profile is never lost.
       const profile = voucher.patient_profile || (patient?.first_name ? patient : null);
       if (profile?.email) {
         syncToGhl({
@@ -610,28 +600,17 @@ const US_STATES = [
   "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming",
 ];
 
-const FEET_OPTIONS = ["3", "4", "5", "6", "7"].map((f) => ({ value: f, label: `${f} ft` }));
-const INCH_OPTIONS = Array.from({ length: 12 }, (_, i) => ({ value: String(i), label: `${i} in` }));
 
-/* Three-step pre-intake funnel. Step 1 captures the lead (the future
-   marketing-CRM contact); steps 2–3 complete the record MDI requires to
-   create the patient file up front — with it, the white-label intake skips
-   every contact/profile screen and opens straight at the medical questions.
-   Height/weight are entered in ft/in + lbs and converted to MDI's cm/kg. */
 function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
   useLockBodyScroll(); // mobile: page behind the modal must not scroll
   const [step, setStep] = useState(0); // 0 = email gate, then steps 1–3
   const [form, setForm] = useState({
     first_name: "", last_name: "", email: "", phone_number: "",
-    dob: "", gender: "", feet: "", inches: "", pounds: "",
+    dob: "", gender: "",
     street: "", city: "", state: "", zip: "",
   });
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
   const setVal = (k) => (v) => setForm((f) => ({ ...f, [k]: v }));
-
-  // Consent lives on the email gate (step 0) — the one screen every patient
-  // passes through, new or returning. We stamp the moment they agree and carry
-  // it to MDI so it's recorded on the patient file, not just enforced in the UI.
   const [consent, setConsent] = useState({ telehealth: false, terms: false });
   const [consentAt, setConsentAt] = useState("");
   const toggleConsent = (k) => () => setConsent((c) => ({ ...c, [k]: !c[k] }));
@@ -653,13 +632,9 @@ function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
     form.last_name.trim().length > 0 &&
     form.phone_number.replace(/\D/g, "").length >= 10;
 
-  const pounds = Number(form.pounds);
   const step2Valid =
     form.dob &&
-    (form.gender === "1" || form.gender === "2") &&
-    form.feet !== "" &&
-    form.inches !== "" &&
-    pounds >= 50 && pounds <= 999;
+    (form.gender === "1" || form.gender === "2");
 
   const step3Valid =
     form.street.trim().length > 0 &&
@@ -672,12 +647,8 @@ function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
     if (loading) return;
     if (step === 0) {
       if (!emailValid || !consentValid) return;
-      // Stamp consent at the moment they agree, then reuse that same timestamp
-      // when the new-patient record is created a few steps later.
       const at = new Date().toISOString();
       setConsentAt(at);
-      // Email-first: an existing MDI record is bound and goes straight into
-      // the intake — returning patients never re-type their details.
       const res = await onSubmit({ email: form.email.trim(), consent: consentRecord(at) });
       if (res?.needProfile) setStep(1);
       return;
@@ -691,7 +662,6 @@ function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
       return;
     }
     if (!step3Valid) return;
-    const totalInches = Number(form.feet) * 12 + Number(form.inches);
     onSubmit({
       first_name: form.first_name.trim(),
       last_name: form.last_name.trim(),
@@ -699,8 +669,6 @@ function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
       phone_number: form.phone_number.trim(),
       date_of_birth: form.dob, // <input type="date"> emits Y-m-d — MDI's format
       gender: Number(form.gender), // MDI: 1 = male, 2 = female
-      height: Math.round(totalInches * 2.54), // MDI stores cm
-      weight: Math.round(pounds * 0.45359237 * 10) / 10, // MDI stores kg
       address: {
         address: form.street.trim(),
         zip_code: form.zip.trim(),
@@ -798,25 +766,6 @@ function PatientInfoModal({ onClose, onSubmit, loading = false, err = "" }) {
                     onChange={setVal("gender")}
                     placeholder="Select…"
                     options={[{ value: "1", label: "Male" }, { value: "2", label: "Female" }]}
-                  />
-                </label>
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                <label className={labelCls}>
-                  Height
-                  <NvSelect value={form.feet} onChange={setVal("feet")} placeholder="ft…" options={FEET_OPTIONS} />
-                </label>
-                <label className={`${labelCls} justify-end`}>
-                  <NvSelect value={form.inches} onChange={setVal("inches")} placeholder="in…" options={INCH_OPTIONS} />
-                </label>
-                <label className={labelCls}>
-                  Weight
-                  <input
-                    value={form.pounds}
-                    onChange={set("pounds")}
-                    placeholder="lbs"
-                    inputMode="numeric"
-                    className={inputCls}
                   />
                 </label>
               </div>
